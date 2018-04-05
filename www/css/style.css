@@ -1,0 +1,31 @@
+
+.splash{
+  background: url("../img/sthlm.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+.branding{
+  width: 70%;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  align-content: center;
+  margin-top: 20px;
+}
+.branding h3{
+  color: rgb(66, 46, 56);
+}
+.bnbLogo{
+  margin-right: 50px;
+}
+.rooms{
+  display: block;
+  margin: auto;
+  width: 100%;
+}
+.error{
+  color: red;
+}
+input.ng-valid-email{
+  color: green;
+}
+

@@ -1,0 +1,23 @@
+<ion-view view-title="" hide-nav-bar="true">
+
+  <ion-header-bar class="bar-dark">
+    
+    <h1 class="title">Rooms</h1>
+   
+  </ion-header-bar>
+
+  <ion-content>
+
+    <ion-list>
+      <ion-item href="#/tab/list/{{item.shortname}}" class="item-thumbnail-left" ng-repeat="item in rooms">
+        <img ng-src="img/{{item.shortname}}.jpg" alt="">
+        
+        <h2>{{item.name}}</h2>
+        <h3>{{item.price}} sek/natt</h3>
+        <p>{{item.info}}</p>
+      
+    </ion-list>
+
+  </ion-content>
+
+</ion-view>

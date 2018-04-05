@@ -1,0 +1,87 @@
+<ion-view view-title="Room Details">
+
+  <ion-content>
+    <ion-list class="list">
+      <ion-item class="item-text-wrap" ng-repeat="item in rooms | filter: {shortname:whichroom}">
+        <img ng-src="img/{{item.shortname}}.jpg" class="rooms">
+        <h2>{{item.name}}</h2>
+        <h3 ng-init="data.price=item.price" ng-model="data.price">{{item.price}} sek/natt</h3>
+        <h4>Kan bokas för max {{item.max}}</h4>
+        <p>{{item.info}}</p>
+    </ion-list>
+    <br>
+
+    <!-- Here I start my form for the guests to fill out, to save data I use ng-model in every input -->
+
+    <form name="myForm" ng-submit="book()" class="padding">
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Förnamn *</span>
+        <input type="text" name="firstname" placeholder="Ange ditt förnamn" ng-model="data.firstname" required>
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Efternamn *</span>
+        <input type="text" name="lastname" placeholder="Ange ditt efternamn" ng-model="data.lastname" required>
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Email *</span>
+        <input type="email" name="email" placeholder="Ange din mail" ng-model="data.email" required>
+        <div ng-show="myForm.email.$error.email" class="error">
+          Ange en giltig Email tack!
+        </div>
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Tel *</span>
+        <input type="tel" name="tel" placeholder="Ange ditt telefonummer" ng-model="data.tel" required>
+      </label>
+
+      <br>
+
+      <label style="padding:0%" class="item item-input item-stacked-label">
+        <ion-item ng-repeat="item in rooms | filter: {shortname:whichroom}">
+          <span class="input-label"> Hur många vuxna? *</span>
+          <input type="number" name="adult" placeholder="Input number of adult" min="1" max="{{item.max}}" ng-model="data.adult" required>
+      </label>
+
+      <label style="padding:0%" class="item item-input item-stacked-label">
+        <ion-item ng-repeat="item in rooms | filter: {shortname:whichroom}">
+          <span class="input-label"> Hur många barn? *</span>
+          <input type="number" name="kid" placeholder="Input number of kids" min="0" max="{{item.max - data.adult}}" ng-model="data.kid"
+            required>
+      </label>
+      <br> 
+      <label class="item item-input">
+          <span class="input-label"> Checkin datum: *</span>
+        <input type="date" name="checkin" ng-model="data.checkin" min="{{today}}" ng-blur="getbookdate()" required>
+      </label>
+      <br> 
+      <label class="item item-input">
+          <span class="input-label"> Checkout datum: *</span>
+        <input type="date" name="checkout" ng-model="data.checkout" min="{{bookdate}}" ng-blur="confirm()" required>
+      </label>
+      <br>
+
+      <ion-item ng-repeat="item in rooms | filter: {shortname:whichroom}">
+
+        <label class="item item-input item-stacked-label" ng-model="data.days" 
+        ng-init="data.days=amountOfDays">Du vill boka {{amountOfDays}} nätter</label>
+        <label class="item item-input item-stacked-label" ng-model="data.totalPrice" ng-init="data.totalPrice=totalPriceFinal"> Totalt pris 
+        {{(item.price-0) * (dateDifference(data.checkin, data.checkout)-0)}}.00 kr</label>
+        <br> 
+        <!-- Here is the button to save all the data in de function submit() -->
+        <input type="submit" name="book" ng-disabled="myForm.$invalid" value="Book" class="button button-block button-positive">
+        <!-- <h3>Data</h3>
+        <pre>
+            {{data | json}}
+        </pre> -->
+    </form>
+   <!-- <h3>response</h3>
+    <div>
+     <h5> {{response}}</h5>
+    </div>-->
+
+
+
+  </ion-content>
+
+</ion-view>

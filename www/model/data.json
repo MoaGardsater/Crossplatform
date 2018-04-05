@@ -1,0 +1,28 @@
+
+   [
+      {
+          "name": "Enkelrum",
+          "info": "Detta rum är perfekt för dig som reser ensam, rummet är rymligt med stor säng och utrustat med allt du behöver för en trevlig vistelse",
+          "price": "800",
+          "shortname":"enkel",
+          "max": "1" 
+          
+      },
+      {
+           "name": "Dubbelrum",
+           "info": "Detta rum är perfekt för er som reser i par. Rummet har gott om plats för två personer och sängen går att dela i två om så önskas",
+           "price": "1200",
+           "shortname":"dubbel",
+           "max": "2"
+           
+       },
+       {
+           "name": "Familjerum",
+           "info": "Detta rum är perfekt för dig som vill resa med familjen i en avslappnad miljö. Detta rum har två separata sovrum med gemensamt allrum",
+           "price": "1700",
+           "shortname":"familj",
+           "max": "5"
+           
+       }
+
+   ]
